@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use the ZTime demo music player.">
+  <title>ZTime | Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Main site header and navigation -->
+<header>
+    <a class="logo" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="player.html" aria-current="page">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="progress.html">Progress</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button id="profileButton" type="button">Create Profile</button>
+  </header>
+  <!-- Main page content -->
+<main id="main"><section class="pageIntro"><p class="eyebrow">WEB PLAYER</p><h1>POWER YOUR <span>SESSION.</span></h1><p>The ZTime Player is a course demo that shows how music could be built into the platform.</p></section><section><div class="player"><div class="cover"><img src="ztime-logo.png" alt="ZTime cover art"></div><div class="now"><small>ZTIME TRAINING MIX</small><h3 id="trackTitle">Intensity Boost</h3><p id="trackArtist">Thrash Squad</p><div class="timeline"><i id="trackBar"></i></div><div class="controls"><button id="previous" aria-label="Previous track">◀◀</button><button id="play" aria-label="Play track">▶</button><button id="next" aria-label="Next track">▶▶</button></div></div><div class="queue"><small>UP NEXT</small><button data-track="0"><b>Intensity Boost</b><span>3:25</span></button><button data-track="1"><b>Blood Rush</b><span>3:52</span></button><button data-track="2"><b>Deep Focus Beats</b><span>4:06</span></button></div></div></section></main>
+  <!-- Site footer -->
+<footer><a class="logo" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a><p>Fitness, music, progress, and community in one place.</p><p>© 2026 ZTime</p></footer>
+  <dialog id="profileDialog"><form id="profileForm"><button class="close" type="button" aria-label="Close">×</button><p class="eyebrow">ZTIME ACCOUNT</p><h2>Create your demo profile</h2><label>Name<input id="name" required></label><label>Weekly workout goal<input id="goal" type="number" min="1" max="14" value="5" required></label><button class="primary" type="submit">Save profile</button><small>This course demo saves information only in this browser.</small></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>

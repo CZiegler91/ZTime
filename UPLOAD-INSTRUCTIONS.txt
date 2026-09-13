@@ -1,0 +1,26 @@
+ZTIME ASSIGNMENT 2 FINAL
+
+Changes added for the rubric:
+- Clear welcome message on the homepage
+- "Created by Chris Ziegler" on the homepage
+- HTML comments around major page sections
+- JavaScript comments around major feature blocks
+- Existing navigation, styling, logo, and functionality preserved
+
+Upload these files to the ROOT of the GitHub ZTime repository:
+index.html
+player.html
+playlists.html
+radio.html
+workouts.html
+progress.html
+community.html
+about.html
+styles.css
+app.js
+ztime-logo.png
+
+GitHub Pages:
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
