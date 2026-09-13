@@ -1,0 +1,24 @@
+ZTIME MOCKUP-STYLE VERSION
+
+This package redesigns the real website to closely match the approved black/red mockup.
+
+Upload ALL of these files to the ROOT of the GitHub ZTime repository:
+- index.html
+- player.html
+- playlists.html
+- radio.html
+- workouts.html
+- progress.html
+- community.html
+- about.html
+- styles.css
+- app.js
+- ztime-logo.png
+- hero-gym.png
+
+GitHub Pages:
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
+
+After uploading, wait for deployment and refresh the site with Ctrl+Shift+R.
