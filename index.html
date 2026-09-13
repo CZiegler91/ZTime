@@ -3,29 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ZTime combines fitness, music, progress tracking, challenges, and community.">
-  <title>ZTime Fitness and Music</title>
+  <meta name="description" content="ZTime combines fitness, music, playlists, radio, progress tracking, and community.">
+  <title>ZTime | Fitness and Music</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header>
-    <a class="logo" href="#home"><b>Z</b>TIME</a>
-    <nav><a href="#player">Player</a><a href="#workouts">Workouts</a><a href="#progress">Progress</a><a href="#community">Community</a></nav>
+    <a class="logo" href="index.html"><img src="images/ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a>
+    <nav aria-label="Main navigation">
+      <a class="active" href="index.html" aria-current="page">Home</a>
+      <a href="player.html">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="progress.html">Progress</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+    </nav>
     <button id="profileButton" type="button">Create Profile</button>
   </header>
   <main id="main">
-    <section class="hero" id="home">
-      <div><p class="eyebrow">MUSIC MEETS MOVEMENT</p><h1>YOUR TIME.<br><span>YOUR ZONE.</span></h1><p class="lead">Build the playlist, finish the workout, and track the progress that matters to you.</p><div class="actions"><a class="primary" href="#workouts">Log a workout</a><a href="#player">Open web player</a></div></div>
-      <aside><div class="ring"><b id="heroSessions">3</b><small>sessions</small></div><div><p class="eyebrow">THIS WEEK</p><h2>Stay in your zone</h2><p id="goalText">Two more sessions will reach your goal.</p></div></aside>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">MUSIC MEETS MOVEMENT</p>
+        <h1>YOUR TIME.<br><span>YOUR ZONE.</span></h1>
+        <p class="lead">ZTime is a fitness and music platform designed to bring workouts, music, playlists, radio, progress tracking, and community features together in one place.</p>
+        <p class="lead">Build the playlist, finish the workout, and track the progress that matters to you.</p>
+        <div class="actions"><a class="primary" href="workouts.html">Log a workout</a><a href="player.html">Open web player</a></div>
+        <div class="dashboard"><div class="ring"><b id="heroSessions">3</b><small>sessions</small></div><div><p class="eyebrow">THIS WEEK</p><h2>Stay in your zone</h2><p id="goalText">Two more sessions will reach your goal.</p></div></div>
+      </div>
+      <aside class="heroLogo"><img src="images/ztime-logo.png" alt="ZTime logo with crossed fists and a stylized letter Z"><p>FITNESS • MUSIC • COMMUNITY</p></aside>
     </section>
     <section><div class="sectionTitle"><p>CHOOSE YOUR ENERGY</p><h2>Four ways to use ZTime</h2></div><div class="modes"><article><i>01</i><h3>Workout Mode</h3><p>High-energy mixes for every rep.</p></article><article><i>02</i><h3>Study Mode</h3><p>Focus playlists without distractions.</p></article><article><i>03</i><h3>Commute Mode</h3><p>Podcasts, radio, and music for the ride.</p></article><article><i>04</i><h3>Challenge Mode</h3><p>Push toward a goal with your group.</p></article></div></section>
-    <section id="player"><div class="sectionTitle"><p>WEB PLAYER</p><h2>Power your next session</h2></div><div class="player"><div class="cover">Z</div><div class="now"><small>ZTIME TRAINING MIX</small><h3 id="trackTitle">Intensity Boost</h3><p id="trackArtist">Thrash Squad</p><div class="timeline"><i id="trackBar"></i></div><div class="controls"><button id="previous" aria-label="Previous track">◀◀</button><button id="play" aria-label="Play track">▶</button><button id="next" aria-label="Next track">▶▶</button></div></div><div class="queue"><small>UP NEXT</small><button data-track="0"><b>Intensity Boost</b><span>3:25</span></button><button data-track="1"><b>Blood Rush</b><span>3:52</span></button><button data-track="2"><b>Deep Focus Beats</b><span>4:06</span></button></div></div></section>
-    <section id="workouts"><div class="sectionTitle"><p>WORKOUT TRACKER</p><h2>Record what you did</h2></div><div class="twoCol"><form id="workoutForm"><label>Workout day<select id="day"><option>Leg Day</option><option>Back Day</option><option>Chest Day</option><option>Core / Abs</option><option>Arms / Shoulders</option><option>Cardio</option></select></label><label>Exercise<input id="exercise" required placeholder="Example: Leg press"></label><div class="fields"><label>Sets<input id="sets" type="number" min="1" value="3" required></label><label>Reps<input id="reps" type="number" min="1" value="10" required></label><label>Weight (lb)<input id="weight" type="number" min="0" value="0" required></label></div><button class="primary" type="submit">Add workout</button><p id="workoutMessage" role="status"></p></form><div class="list"><div class="listHead"><h3>Recent workouts</h3><span id="workoutCount"></span></div><ul id="workoutList"></ul></div></div></section>
-    <section id="progress"><div class="sectionTitle"><p>YOUR PROGRESS</p><h2>Small wins add up</h2></div><div class="stats"><article><span>Weekly sessions</span><b id="sessionStat">3 / 5</b><div><i id="sessionBar"></i></div></article><article><span>Total volume</span><b id="volumeStat">12,450 lb</b><small>based on saved sets</small></article><article><span>Current streak</span><b>4 days</b><small>personal best: 8 days</small></article><article><span>Monthly badge</span><b>Momentum</b><small>8 of 12 workouts complete</small></article></div></section>
-    <section id="community"><div class="sectionTitle"><p>ZTIME COMMUNITY</p><h2>Share what works for you</h2></div><div class="twoCol community"><div class="forum" id="posts"><article><b>KT</b><div><small>MEAL PREP</small><h3>High-protein lunches that hold up all week?</h3><p>I need ideas that are simple enough to make on Sunday.</p></div></article><article><b>MJ</b><div><small>STRENGTH TRAINING</small><h3>What helped you improve your leg day?</h3><p>Tracking reps has helped me more than changing exercises every week.</p></div></article></div><form id="postForm"><h3>Start a discussion</h3><label>Topic<select id="topic"><option>Workout Ideas</option><option>Meal Prep</option><option>Music</option><option>Challenges</option></select></label><label>Title<input id="postTitle" maxlength="80" required></label><label>Post<textarea id="postBody" maxlength="240" required></textarea></label><button class="primary" type="submit">Post to forum</button><p id="postMessage" role="status"></p></form></div><p class="note">Community posts are personal experiences, not medical or nutrition advice.</p></section>
   </main>
-  <footer><a class="logo" href="#home"><b>Z</b>TIME</a><p>A fitness and music concept created from a high-school nickname.</p><p>© 2026 ZTime</p></footer>
+  <footer><a class="logo" href="index.html"><img src="images/ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a><p>Fitness, music, progress, and community in one place.</p><p>© 2026 ZTime</p></footer>
   <dialog id="profileDialog"><form id="profileForm"><button class="close" type="button" aria-label="Close">×</button><p class="eyebrow">ZTIME ACCOUNT</p><h2>Create your demo profile</h2><label>Name<input id="name" required></label><label>Weekly workout goal<input id="goal" type="number" min="1" max="14" value="5" required></label><button class="primary" type="submit">Save profile</button><small>This course demo saves information only in this browser.</small></form></dialog>
   <script src="app.js"></script>
-</body></html>
+</body>
+</html>
