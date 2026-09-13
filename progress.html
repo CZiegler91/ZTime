@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View workout progress in ZTime.">
+  <title>ZTime | Progress</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <a class="logo" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="player.html">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a href="workouts.html">Workouts</a>
+      <a class="active" href="progress.html" aria-current="page">Progress</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button id="profileButton" type="button">Create Profile</button>
+  </header>
+  <main id="main"><section class="pageIntro"><p class="eyebrow">YOUR PROGRESS</p><h1>SMALL WINS <span>ADD UP.</span></h1><p>See your weekly workout count and training volume based on workouts saved in this browser.</p></section><section><div class="stats"><article><span>Weekly sessions</span><b id="sessionStat">3 / 5</b><div><i id="sessionBar"></i></div></article><article><span>Total volume</span><b id="volumeStat">12,450 lb</b><small>based on saved sets</small></article><article><span>Current streak</span><b>4 days</b><small>demo display</small></article><article><span>Monthly badge</span><b>Momentum</b><small>demo display</small></article></div></section></main>
+  <footer><a class="logo" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span><strong>Z</strong>TIME</span></a><p>Fitness, music, progress, and community in one place.</p><p>© 2026 ZTime</p></footer>
+  <dialog id="profileDialog"><form id="profileForm"><button class="close" type="button" aria-label="Close">×</button><p class="eyebrow">ZTIME ACCOUNT</p><h2>Create your demo profile</h2><label>Name<input id="name" required></label><label>Weekly workout goal<input id="goal" type="number" min="1" max="14" value="5" required></label><button class="primary" type="submit">Save profile</button><small>This course demo saves information only in this browser.</small></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
