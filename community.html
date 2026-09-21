@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Share workout, music, and fitness ideas in the ZTime community demo.">
+  <title>ZTime | Community</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Main site header and navigation -->
+<header class="siteHeader">
+    <a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a>
+    <nav class="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="player.html">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="progress.html">Progress</a>
+      <a class="active" href="community.html" aria-current="page">Community</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div id="profileControls" class="profileControls" role="group" aria-label="Profile controls"></div>
+  </header>
+  <!-- Main page content -->
+<main id="main"><section class="pageIntro"><p class="eyebrow">ZTIME COMMUNITY</p><h1>SHARE WHAT <span>WORKS.</span></h1><p>Use the community demo to post workout, meal prep, music, and challenge ideas.</p></section><section><div class="twoCol community"><div class="forum" id="posts"><article><b>KT</b><div><small>MEAL PREP</small><h3>High-protein lunches that hold up all week?</h3><p>I need ideas that are simple enough to make on Sunday.</p></div></article><article><b>MJ</b><div><small>STRENGTH TRAINING</small><h3>What helped you improve your leg day?</h3><p>Tracking reps has helped me more than changing exercises every week.</p></div></article></div><form id="postForm"><h3>Start a discussion</h3><label>Topic<select id="topic"><option>Workout Ideas</option><option>Meal Prep</option><option>Music</option><option>Challenges</option></select></label><label>Title<input id="postTitle" maxlength="80" required></label><label>Post<textarea id="postBody" maxlength="240" required></textarea></label><button class="primary" type="submit">Post to forum</button><p id="postMessage" role="status"></p></form></div><p class="note">Community posts are personal experiences, not medical or nutrition advice.</p></section><section class="moduleSection compactSection" aria-labelledby="community-tools"><div class="sectionHeading"><div><p class="eyebrow">BETTER TOGETHER</p><h2 id="community-tools">Community Goals</h2></div></div><div class="contentCards threeCards"><article class="contentCard"><span class="cardIcon">🏆</span><h3>Challenges</h3><p>Challenge yourself or work toward shared fitness goals.</p></article><article class="contentCard"><span class="cardIcon">●●</span><h3>Friends</h3><p>Encourage friends, share progress, and make fitness something you can do together.</p></article><article class="contentCard"><span class="cardIcon">★</span><h3>Community Motivation</h3><p>Share ideas, celebrate milestones, and help keep each other moving forward.</p></article></div></section></main>
+  <!-- Site footer -->
+<footer><a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a><p>Fitness, music, progress, and community in one place.</p><p>© 2026 ZTime</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

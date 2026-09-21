@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Record workouts with the ZTime workout tracker.">
+  <title>ZTime | Workouts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Main site header and navigation -->
+<header class="siteHeader">
+    <a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a>
+    <nav class="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="player.html">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a class="active" href="workouts.html" aria-current="page">Workouts</a>
+      <a href="progress.html">Progress</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div id="profileControls" class="profileControls" role="group" aria-label="Profile controls"></div>
+  </header>
+  <!-- Main page content -->
+<main id="main"><section class="pageIntro"><p class="eyebrow">WORKOUT TRACKER</p><h1>RECORD WHAT <span>YOU DID.</span></h1><p>Use this demo tracker to save exercises, sets, reps, and weight in your browser.</p></section><section><div class="twoCol"><form id="workoutForm"><label>Workout day<select id="day"><option>Leg Day</option><option>Back Day</option><option>Chest Day</option><option>Core / Abs</option><option>Arms / Shoulders</option><option>Cardio</option></select></label><label>Exercise<input id="exercise" required placeholder="Example: Leg press"></label><div class="fields"><label>Sets<input id="sets" type="number" min="1" value="3" required></label><label>Reps<input id="reps" type="number" min="1" value="10" required></label><label>Weight (lb)<input id="weight" type="number" min="0" value="0" required></label></div><button class="primary" type="submit">Add workout</button><p id="workoutMessage" role="status"></p></form><div class="list"><div class="listHead"><h3>Recent workouts</h3><span id="workoutCount"></span></div><ul id="workoutList"></ul></div></div></section><section class="moduleSection compactSection" aria-labelledby="workout-types"><div class="sectionHeading"><div><p class="eyebrow">TRAIN YOUR WAY</p><h2 id="workout-types">Workout Categories</h2></div></div><div class="contentCards"><article class="contentCard"><span class="cardIcon">◆</span><h3>Strength</h3><p>Track sets, reps, and weight for strength-focused training.</p></article><article class="contentCard"><span class="cardIcon">♥</span><h3>Cardio</h3><p>Stay consistent with running, walking, and conditioning.</p></article><article class="contentCard"><span class="cardIcon">◉</span><h3>Core</h3><p>Build consistency with core exercises and bodyweight movements.</p></article><article class="contentCard"><span class="cardIcon">↻</span><h3>Recovery</h3><p>Make mobility, stretching, and recovery part of the journey.</p></article></div></section></main>
+  <!-- Site footer -->
+<footer><a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a><p>Fitness, music, progress, and community in one place.</p><p>© 2026 ZTime</p></footer>
+<script src="app.js"></script>
+</body>
+</html>
