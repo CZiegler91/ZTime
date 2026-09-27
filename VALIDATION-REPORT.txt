@@ -1,0 +1,32 @@
+ZTIME MODULE 4 — VALIDATION REPORT
+Date: September 27, 2026
+
+W3C Nu HTML checker: https://validator.w3.org/nu/
+All eight final HTML documents were submitted directly to the W3C service.
+Result: zero errors, zero warnings, and zero informational messages on each:
+  about.html, community.html, index.html, player.html,
+  playlists.html, progress.html, radio.html, workouts.html.
+The initial heading-level findings were fixed and all eight files revalidated.
+
+Browser: Microsoft Edge, automated through Playwright.
+40 page/viewport checks: all eight pages at 1440, 1024, 768, 390, and 320 pixels.
+Result: no horizontal page overflow, eight navigation links on every page,
+no broken images, and no JavaScript page errors.
+Desktop and phone homepage screenshots and phone workout layout inspected.
+
+Interactive checks passed:
+- Create profile, add exercise, reload and retain exercise.
+- Log out to guest history; switch back to saved profile and retain isolation.
+- Remove exercise and display updated count on Progress.
+- Player next-track selection and play control.
+- Community demo form adds a visible post.
+
+Static checks passed:
+- All local links, scripts, images, and fragment targets exist.
+- One H1 per page, no duplicate IDs, all eight links in each main navigation.
+- About main-content text matches the supplied Module 3 text.
+- Banner dimensions confirmed as exactly 800 x 600 pixels.
+- JavaScript syntax check passed.
+
+Limits: HTML was checked with W3C; no separate W3C CSS certification is claimed.
+The site has not been deployed. Recheck your actual hosted URL after uploading.
