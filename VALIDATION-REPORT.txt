@@ -1,0 +1,30 @@
+VALIDATION — ALL SIX STATIONS ON PAGE — OCTOBER 4, 2026
+
+PASS: syntax, eight-page initialization, absent-control guards, links, unique IDs,
+fragment targets and active navigation. Original About/Home/Playlists/Workouts/
+Progress/Community and image assets are unchanged from the enhanced base.
+PASS: timer Start/Pause/Resume/Reset; all challenge levels; motivation; goal,
+completion and undo; profile isolation; four playlist moods; 800 x 600 banner.
+PASS: six allowlisted iframe configurations, switch/stop unload, repeated clicks
+do not restart, unknown saved station fails safely.
+PASS: real browser, official players framed in a local website: all six routes
+achieved readyState 4, paused false and advancing playback time after pressing
+provider Play/Listen Live. Prerolls and cookie/privacy notices were preserved.
+PASS: finished Radio/Player station selection, remembering selection, iframe
+cleanup, default no-autoplay, desktop/phone player layout and visible fallback.
+Desktop screenshot saved of final radio controls and official widget.
+
+Existing base tested all eight pages at 390/768/1440px and no-JS station links.
+This update keeps those layouts and native links and rechecks changed controls.
+No deployed GitHub Pages-origin test or fresh W3C validator submission performed.
+No source audio was downloaded or reproduced. Cross-origin media-state inspection
+was used only by the test browser; production ZTime does not read provider internals.
+External providers may change availability, framing policies or region requirements.
+
+NATIONWIDE UPDATE CHECKS
+Passed shared-script initialization on all eight pages and original feature tests.
+Passed URL host/protocol/path/credential/port validation, malformed storage
+handling, local/iHeart duplicate detection and saved station restoration.
+Browser checked Chicago search, custom KOST addition, Radio-to-Player restoration
+and responsive overflow. Official widget playback checked on the local preview.
+No new hosted GitHub Pages-origin or live W3C validator check was performed.

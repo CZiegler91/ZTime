@@ -1,0 +1,36 @@
+ZTIME MODULE 5 — GITHUB PAGES UPLOAD
+
+1. Extract ZTime_Module5_Enhanced_Final.zip on your computer.
+2. Open your existing GitHub Pages repository and its publishing folder
+   (the repository root, or docs if that is your configured source).
+3. Upload the extracted site files into that folder, replacing files with
+   matching names. Upload the files themselves, not the ZIP or a containing folder.
+4. Keep your existing GitHub Pages configuration and any custom-domain CNAME.
+   This package does not require a build tool, dependency installation, or server.
+5. Commit the changes and wait for the Pages deployment to finish.
+6. Visit your existing Pages URL and refresh. Check all eight navigation links,
+   the homepage banner, and the profile/workout controls.
+7. Submit the ZIP and your actual hosted URL to the course assignment.
+
+This package has not been published to your repository. No repository URL was
+provided. Use the URL shown in your repository Settings > Pages.
+
+Existing browser profiles are preserved when replacing Module 4 at the same
+origin: the localStorage keys remain unchanged. Another browser/device or a
+changed site origin will not share those records. Back up important data first.
+
+HTML files: index, player, playlists, radio, workouts, progress, community, about.
+Shared assets: styles.css, app.js, ztime-logo.png, ztime-banner.png.
+hero-gym.png is retained from Module 3 for continuity, although the homepage
+now displays the new banner. Documentation text files do not affect the site.
+
+
+RADIO UPDATE: All six cards load official players on the page. Press Play or
+Listen Live inside the provider player and answer its privacy/cookie prompt.
+Try Close / Stop Radio and restore your station on Player. If a provider fails
+on the hosted origin, use Open Official Player; no restrictions are bypassed.
+
+NATIONWIDE RADIO: Open Radio, search your library or paste an official iHeart
+live-station link under Add an iHeart station. Press Play in the embedded player.
+Saved choices also appear on Player. Publish all ZIP contents at the repository
+root on GitHub Pages. Embedded playback still depends on provider availability.
