@@ -28,15 +28,20 @@
 <main id="main"><section class="pageIntro"><p class="eyebrow">WEB PLAYER</p>
 <h1>POWER YOUR <span>SESSION.</span>
 </h1>
-<p>Your saved local station is ready below. Open its official player to listen, or explore the sample music controls.</p></section><!-- Station selection is shared with Radio through browser-local storage. -->
+<p>Listen to your saved local station right here, choose another station, or explore the sample music controls.</p></section><!-- Station selection is shared with Radio through browser-local storage. -->
 <section class="moduleSection" aria-labelledby="localNowHeading">
-<div class="localNow"><div><p class="eyebrow">YOUR LOCAL SOUNDTRACK</p>
-<h2 id="localNowHeading">Now Playing</h2><h3 id="localStationName">Choose your station</h3>
+<div class="localNow"><div><p class="eyebrow">YOUR RADIO SOUNDTRACK</p>
+<h2 id="localNowHeading">Now Playing</h2>
+<!-- Provider credit follows the selected station; other broadcasters retain their own branding. -->
+<p id="radioProviderCredit" class="radioProviderCredit" hidden>ZTime Radio — powered by iHeartRadio</p><h3 id="localStationName">Choose your station</h3>
 <p id="localStationMeta">Buffalo &amp; Western New York</p>
-<p id="localStationStatus" role="status">Select a station to open its official live player. No audio is playing inside ZTime.</p></div>
-<div class="localNowActions"><a id="localOfficialPlayer" class="radioListen" hidden target="_blank" rel="noopener noreferrer">Open Official Player ↗</a>
+<p id="localStationStatus" role="status">Choose a station to listen here using its official player.</p></div>
+<div class="localNowActions"><button id="loadLocalPlayer" class="radioListen" type="button" hidden>Load Station Here</button><a id="localOfficialPlayer" class="radioListen" hidden target="_blank" rel="noopener noreferrer">Open Official Player ↗</a>
 <a class="outlineButton" href="radio.html">Browse Stations</a></div></div>
-<p class="radioNote">Playback, volume, and current song information are provided by the station’s official player in a new tab. ZTime remembers your selection; it cannot detect playback in that tab.</p>
+<!-- Official compact player stays intact, including ads, privacy and provider controls. -->
+<div class="localPlaybackControls"><label for="localStationSelect">Choose a station</label><select id="localStationSelect"><option value="">Select a station</option><option value="wgrf">97 Rock — play here</option><option value="wedg">103.3 The Edge — play here</option><option value="wyrk">106.5 WYRK — play here</option><option value="wblk">Power 93.7 WBLK — play here</option><option value="wkse">KISS 98.5 — play here</option><option value="wgr">WGR 550 Sports — play here</option></select><button id="stopLocalPlayer" class="outlineButton" type="button" hidden>Close / Stop Radio</button></div>
+<div id="localPlayerHost" class="localPlayerHost" hidden></div>
+<p class="radioNote">All six stations can be opened here in their official players. Press Play or Listen Live inside the player, and respond to its privacy notice if prompted. KISS and WGR show their full listening pages. If playback is unavailable, use Open Official Player. Leaving this page stops audio; your station choice is remembered.</p>
 <noscript><p>JavaScript is off. Listen Live links still work, but your selection cannot be remembered.</p></noscript></section><section><h2 class="visuallyHidden">Demo music player</h2>
 <div class="player">
 <div class="cover"><img src="ztime-logo.png" alt="ZTime cover art"></div>
@@ -56,7 +61,7 @@
 <p class="eyebrow">ABOUT THE PLAYER</p>
 <h2>Music That Moves With You</h2>
 </div>
-<p>The ZTime Player demonstrates track selection, play and pause controls, and a queue alongside your remembered local radio selection. The training mix controls are a visual demo and do not control the external radio player.</p>
+<p>The ZTime Player demonstrates track selection, play and pause controls, and a queue alongside your remembered local radio selection. The training mix controls are a visual demo and do not control the official embedded radio player.</p>
 </div></section><section class="moduleSection learningSection"><div class="sectionHeading"><div>
 <p class="eyebrow">PLAYER GUIDE</p>
 <h2>Explore the listening experience</h2>

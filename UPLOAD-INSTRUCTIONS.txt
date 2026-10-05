@@ -24,3 +24,13 @@ Shared assets: styles.css, app.js, ztime-logo.png, ztime-banner.png.
 hero-gym.png is retained from Module 3 for continuity, although the homepage
 now displays the new banner. Documentation text files do not affect the site.
 
+
+RADIO UPDATE: All six cards load official players on the page. Press Play or
+Listen Live inside the provider player and answer its privacy/cookie prompt.
+Try Close / Stop Radio and restore your station on Player. If a provider fails
+on the hosted origin, use Open Official Player; no restrictions are bypassed.
+
+NATIONWIDE RADIO: Open Radio, search your library or paste an official iHeart
+live-station link under Add an iHeart station. Press Play in the embedded player.
+Saved choices also appear on Player. Publish all ZIP contents at the repository
+root on GitHub Pages. Embedded playback still depends on provider availability.

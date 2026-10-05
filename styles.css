@@ -650,3 +650,27 @@ a:focus-visible,button:focus-visible { outline:3px solid #ffb0b5; outline-offset
 /* Tablet and phone layouts prevent card and selected-player overflow. */
 @media(max-width:1000px) {.stationGrid {grid-template-columns:repeat(2,minmax(0,1fr));}.localNow {align-items:flex-start;flex-direction:column;}.localNowActions {flex-direction:row;flex-wrap:wrap;flex-shrink:1;}}
 @media(max-width:600px) {.stationGrid {grid-template-columns:1fr;}.localNowActions {width:100%;flex-direction:column;}.stationDial {font-size:2.8rem;}}
+
+/* Official radio embeds: large enough for provider privacy and playback controls. */
+.localPlaybackControls {display:flex;align-items:center;flex-wrap:wrap;gap:1rem;margin:1.5rem 0;}
+.localPlaybackControls select {max-width:100%;padding:.8rem;color:#fff;background:#171717;border:1px solid #777;border-radius:7px;font:inherit;}
+.localPlaybackControls button {color:#fff;background:#171717;padding:.8rem;min-height:44px;cursor:pointer;}
+.localNowActions button {border:0;font:inherit;cursor:pointer;}
+.localPlayerHost {border:1px solid #555;border-radius:12px;overflow:hidden;background:#161616;}
+.localPlayerHost iframe {display:block;width:100%;height:480px;border:0;}
+.localPlayerHost[hidden],.localPlaybackControls button[hidden] {display:none;}
+@media(max-width:600px) {.localPlaybackControls {align-items:stretch;flex-direction:column;}.localPlayerHost iframe {height:560px;}}
+
+/* Match the provider's intended layout without modifying cross-origin content. */
+.localPlayerHost iframe.radioFrame-iheart {height:200px;}
+.localPlayerHost iframe.radioFrame-audacy {height:760px;}
+@media(max-width:600px) {
+  .localPlayerHost iframe.radioFrame-iheart {height:220px;}
+  .localPlayerHost iframe.radioFrame-audacy {height:780px;}
+}
+
+/* Nationwide station library and accessible add-station form. */
+.radioInput{display:block;width:100%;box-sizing:border-box;max-width:700px;background:#181818;color:#fff;border:1px solid #777;border-radius:6px;padding:14px;margin:8px 0 18px;font:inherit}.radioAdd{margin-top:32px;padding:24px;border:1px solid #533;border-radius:12px;background:#131313}.radioAdd form{max-width:700px}.radioInput:focus{outline:2px solid #ff3030;outline-offset:2px}#nationalStationResults .guideCard{min-width:0}#nationalStationResults h3{overflow-wrap:anywhere}
+
+/* Text credit identifies the official iHeart playback provider. */
+.radioProviderCredit{color:#ddd;font-size:.95rem;letter-spacing:.02em}.radioProviderCredit a{color:#ff5959;font-weight:700}

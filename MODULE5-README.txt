@@ -1,24 +1,42 @@
-ZTIME MODULE 5 ENHANCED — LOCAL RADIO UPDATE — OCTOBER 4, 2026
+ZTIME MODULE 5 ENHANCED — ALL SIX STATIONS ON PAGE — OCTOBER 4, 2026
 
-Base: latest saved October 4 enhanced build. All eight filenames, existing
-Module 1–4 content, personalized About story, black/red styling, navigation,
-profile storage keys, original images, 800 x 600 banner and semantic fixes retained.
-Radio and Player now share a browser-local selected station ID.
+All six station cards now load an official provider player inside Radio or Player.
+97 Rock and The Edge: iHeart's public, documented live-radio widgets.
+WYRK and WBLK: Amperwave's documented compact players.
+KISS and WGR: intact Audacy station listening pages in normal browser iframes.
+KISS/WGR display the full provider site with its own scroll area, not a compact
+widget. Press Play or Listen Live in the official player and handle its cookie
+or privacy notice if prompted. Provider controls, branding, ads and rules remain.
 
-FEATURES
-- Six Buffalo/WNY station cards with genres and official Listen Live links.
-- Now Playing selection panel on Radio and Player, plus cross-tab updates.
-- Workout Start/Pause/Reset timer and Easy/Moderate/Hard challenge generator.
-- Motivation generator and weekly goal/progress tracker with undo, per profile.
-- Lifting/Cardio/Focus/Recovery playlist mood selector.
-- Commented HTML/CSS/JS, responsive grids, keyboard focus and storage fallback.
+No raw stream extraction, proxying, token reuse, referrer spoofing, security
+changes, ad skipping or streaming-restriction bypass is used. Normal browser
+framing and provider playback were tested; future provider restrictions may
+change availability. Always use Open Official Player as the fallback if needed.
+Provider players may require cookies, user interaction or regional availability.
 
-Radio uses official external players. No direct stream permission/compatibility
-was established, so there is no embedded stream, iframe, proxy or restriction
-bypass. Now Playing identifies the selected station, not a detected broadcast.
-Use the official player for actual audio, volume and current song information.
-Links work without JavaScript. If storage is blocked, selection lasts only on
-the current page; cross-page persistence requires localStorage on the same origin.
-The saved radio selection is browser-wide; workout/weekly data remain per profile.
-Training mix controls are still a visual demo. Timer resets on page navigation.
-Community posts remain page-local. No build process is required for GitHub Pages.
+The browser-local station ID is remembered on Radio/Player and shared between
+open tabs. Restore loads only after user action. Close / Stop Radio removes the
+iframe. Switching stations removes old audio. Repeated Load clicks do not reload.
+Leaving/reloading the page stops audio; uninterrupted navigation is not claimed.
+ZTime cannot inspect cross-origin audio, so it does not falsely report playback.
+An iframe load event does not prove success; the official backup link stays visible.
+No-JS station links work; blocked storage limits remembered selection to the page.
+
+PRESERVED: eight pages, original About story, black/red design, navigation,
+banner (800 x 600), images, profile creation/switching and prior semantic fixes.
+Workout timer, Easy/Moderate/Hard challenges, motivation, weekly progress/goal/undo
+per profile, and four playlist moods remain. Sample track controls are a visual
+demo and do not control radio. Community posts remain page-local.
+Radio choice is browser-wide; workout/weekly data remain per profile.
+Upload the ZIP contents to your GitHub Pages publishing folder; no build needed.
+
+NATIONWIDE RADIO UPDATE
+Radio now includes a searchable ten-station starter library (six Buffalo stations
+plus Z100, KIIS Los Angeles, KISS Chicago and Lite FM New York). Search applies
+to your ZTime library, not iHeart's entire remote catalog. Use Find stations on
+iHeart to discover more, then paste any available iHeart live-station page link
+into Add an iHeart station. Your added stations and selection are remembered
+locally and offered on Player. Up to 100 additional stations can be saved.
+Press Play inside the official embedded player. Availability is provider-controlled;
+Open Official Player remains the fallback. This is not a guarantee that every
+radio station worldwide is carried by iHeart or available in every region.

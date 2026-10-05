@@ -554,11 +554,14 @@ initializeWeeklyTracker();
 initializePlaylistMoods();
 
 // Module 5 Local Radio: keep only an allowlisted station ID in localStorage.
-// Official-player fallback is intentional: no authorized embeddable streams
-// were established. Never extract tokenized URLs or bypass provider restrictions.
+// iHeart and Amperwave provide official widgets; Audacy pages play in normal
+// browser frames. Keep each complete provider player intact. No raw streams,
+// tokens, altered referrers, proxies or browser security changes are used.
 const LOCAL_STATIONS = [
   {
     "id": "wgrf",
+    "embedUrl": "https://www.iheart.com/live/97-rock-5355/?embed=true&theme=dark",
+    "playerKind": "iheart",
     "name": "97 Rock",
     "frequency": "96.9 FM \u00b7 WGRF",
     "genre": "Classic Rock",
@@ -566,6 +569,8 @@ const LOCAL_STATIONS = [
   },
   {
     "id": "wedg",
+    "embedUrl": "https://www.iheart.com/live/1033-the-edge-5449/?embed=true&theme=dark",
+    "playerKind": "iheart",
     "name": "103.3 The Edge",
     "frequency": "103.3 FM \u00b7 WEDG",
     "genre": "Alternative Rock",
@@ -573,6 +578,8 @@ const LOCAL_STATIONS = [
   },
   {
     "id": "wyrk",
+    "playerKind": "amperwave",
+    "embedUrl": "https://player-minimal.amperwave.net/5000",
     "name": "106.5 WYRK",
     "frequency": "106.5 FM \u00b7 WYRK",
     "genre": "Country",
@@ -580,6 +587,8 @@ const LOCAL_STATIONS = [
   },
   {
     "id": "wblk",
+    "playerKind": "amperwave",
+    "embedUrl": "https://player-minimal.amperwave.net/4997",
     "name": "Power 93.7 WBLK",
     "frequency": "93.7 FM \u00b7 WBLK",
     "genre": "Hip-Hop / R&B",
@@ -587,6 +596,8 @@ const LOCAL_STATIONS = [
   },
   {
     "id": "wkse",
+    "embedUrl": "https://www.audacy.com/stations/kiss985",
+    "playerKind": "audacy",
     "name": "KISS 98.5",
     "frequency": "98.5 FM \u00b7 WKSE",
     "genre": "Pop / Top 40",
@@ -594,44 +605,187 @@ const LOCAL_STATIONS = [
   },
   {
     "id": "wgr",
+    "embedUrl": "https://www.audacy.com/stations/wgr550",
+    "playerKind": "audacy",
     "name": "WGR 550 Sports Radio",
     "frequency": "550 AM \u00b7 WGR",
     "genre": "Buffalo Sports",
     "playerUrl": "https://www.audacy.com/stations/wgr550"
   }
 ];
+
+// Nationwide stations use iHeart's documented public embed, never raw audio URLs.
+const SAVED_RADIO_KEY = 'ztime-saved-iheart';
+function iheartStation(raw, label = '', location = '') {
+  try {
+    const url = new URL(raw);
+    if (!['https:', 'http:'].includes(url.protocol) || !['www.iheart.com', 'iheart.com'].includes(url.hostname) || url.username || url.password || url.port) return null;
+    const match = url.pathname.match(/^\/live\/(?:[a-z0-9-]+-)?([1-9][0-9]*)\/?$/i);
+    if (!match) return null;
+    const id = match[1];
+    const canonical = 'https://www.iheart.com/live/' + id + '/';
+    const fallback = url.pathname.split('/')[2].replace(/-?\d+$/, '').replace(/-/g, ' ') || 'iHeart station ' + id;
+    return {id: 'iheart-' + id, name: String(label || fallback).trim().slice(0,80), frequency: String(location || 'iHeart Live Radio').trim().slice(0,80), genre: 'Live Radio', playerKind: 'iheart', playerUrl: canonical, embedUrl: canonical + '?embed=true&theme=dark'};
+  } catch { return null; }
+}
+const NATIONAL_STATIONS = [
+  iheartStation('https://www.iheart.com/live/z100-1469/', 'Z100', 'New York, NY · Hit Music'),
+  iheartStation('https://www.iheart.com/live/1027-kiis-fm-los-angeles-185/', '102.7 KIIS FM', 'Los Angeles, CA · Hit Music'),
+  iheartStation('https://www.iheart.com/live/1035-kiss-fm-849/', '103.5 KISS FM', 'Chicago, IL · Hit Music'),
+  iheartStation('https://www.iheart.com/live/1067-lite-fm-1477/', '106.7 Lite FM', 'New York, NY · Variety')
+];
+function savedRadioStations() {
+  try {
+    const saved = JSON.parse(storage.getItem(SAVED_RADIO_KEY) || '[]');
+    if (!Array.isArray(saved)) return [];
+    return saved.slice(0,100).map(item => item && iheartStation(item.playerUrl,item.name,item.frequency)).filter(Boolean);
+  } catch { return []; }
+}
+function sameRadioStation(a,b) {
+  if (a.playerKind === 'iheart' && b.playerKind === 'iheart') return iheartStation(a.embedUrl)?.id === iheartStation(b.embedUrl)?.id;
+  return a.id === b.id;
+}
+function allRadioStations() {
+  const stations = [...LOCAL_STATIONS, ...NATIONAL_STATIONS];
+  savedRadioStations().forEach(item => { if (!stations.some(s => sameRadioStation(s,item))) stations.push(item); });
+  return stations;
+}
+// Build controls with textContent so stored labels are never interpreted as HTML.
+function refreshRadioLibrary() {
+  const select = $('#localStationSelect');
+  if (select) {
+    select.replaceChildren();
+    const empty = document.createElement('option'); empty.value = ''; empty.textContent = 'Select a station'; select.appendChild(empty);
+    allRadioStations().forEach(station => {const option = document.createElement('option'); option.value = station.id; option.textContent = station.name + ' — ' + station.frequency; select.appendChild(option);});
+  }
+  renderRadioResults();
+}
+function renderRadioResults() {
+  const host = $('#nationalStationResults'); if (!host) return;
+  const query = ($('#radioSearch')?.value || '').trim().toLowerCase();
+  const stations = allRadioStations().filter(s => [s.name,s.frequency,s.genre].join(' ').toLowerCase().includes(query));
+  host.replaceChildren();
+  stations.forEach(station => {
+    const card = document.createElement('article'); card.className = 'guideCard';
+    const title = document.createElement('h3'); title.textContent = station.name;
+    const detail = document.createElement('p'); detail.textContent = station.frequency;
+    const button = document.createElement('button'); button.type = 'button'; button.className = 'radioListen'; button.textContent = '▶ Listen Here';
+    button.addEventListener('click', () => {chooseLocalStation(station.id); loadLocalRadio();});
+    card.append(title,detail,button); host.appendChild(card);
+  });
+  $('#radioSearchStatus').textContent = stations.length ? stations.length + ' stations in your ZTime library.' : 'No matches in your library. Find a station on iHeart, then paste its link below.';
+}
+function initializeRadioLibrary() {
+  refreshRadioLibrary();
+  $('#radioSearch')?.addEventListener('input',renderRadioResults);
+  $('#addRadioForm')?.addEventListener('submit',event => {
+    event.preventDefault();
+    const station = iheartStation($('#iheartStationUrl').value,$('#iheartStationLabel').value);
+    const status = $('#addRadioStatus');
+    if (!station) {status.textContent = 'Paste an iHeart live-station link, such as https://www.iheart.com/live/z100-1469/.'; return;}
+    const existing = allRadioStations().find(s => sameRadioStation(s,station));
+    const chosen = existing || station;
+    if (!existing) {
+      const saved = savedRadioStations();
+      if (saved.length >= 100) {status.textContent = 'Your saved library has reached 100 stations.'; return;}
+      saved.push(station); storage.setItem(SAVED_RADIO_KEY,JSON.stringify(saved));
+    }
+    refreshRadioLibrary(); chooseLocalStation(chosen.id); loadLocalRadio();
+    status.textContent = chosen.name + ' added to your station choices. Press Play in the official player.';
+    try {if (!existing && !JSON.parse(localStorage.getItem(SAVED_RADIO_KEY) || '[]').some(s => s.id === chosen.id)) throw Error();}
+    catch {status.textContent += ' Browser storage is unavailable; this station is saved only for this page visit.';}
+  });
+}
+
 const LOCAL_STATION_KEY = 'ztime-local-station';
 function selectedLocalStation() {
-  return LOCAL_STATIONS.find(station => station.id === storage.getItem(LOCAL_STATION_KEY)) || null;
+  return allRadioStations().find(station => station.id === storage.getItem(LOCAL_STATION_KEY)) || null;
+}
+// Iframe loads only after a user action, preserving broadcaster controls and ads.
+let loadedLocalStation = null;
+let localPlayerTimeout = null;
+function stopLocalRadio() {
+  clearTimeout(localPlayerTimeout);
+  const host = $('#localPlayerHost');
+  if (host) { host.replaceChildren(); host.hidden = true; }
+  loadedLocalStation = null;
+  if ($('#stopLocalPlayer')) $('#stopLocalPlayer').hidden = true;
 }
 function renderLocalStation() {
   const name = $('#localStationName'), meta = $('#localStationMeta');
   const status = $('#localStationStatus'), link = $('#localOfficialPlayer');
   if (!name || !meta || !status || !link) return;
   const station = selectedLocalStation();
+  const credit = $('#radioProviderCredit');
+  if (credit) credit.hidden = station?.playerKind !== 'iheart';
+  if (loadedLocalStation && loadedLocalStation !== station?.id) stopLocalRadio();
   name.textContent = station ? station.name : 'Choose your station';
   meta.textContent = station ? station.frequency + ' · ' + station.genre : 'Buffalo & Western New York';
-  status.textContent = station ? 'Selected station · Listen in the official player. No audio is playing inside ZTime.' : 'Select a station to open its official live player. No audio is playing inside ZTime.';
+  if (!loadedLocalStation) status.textContent = !station ? 'Choose a station to listen here.' : station.embedUrl ? 'Ready to listen here. Select Load Station Here, then press Play or Listen Live in the official player.' : 'This station uses its official listening page. On-page playback is not available for this station.';
   link.hidden = !station;
   if (station) { link.href = station.playerUrl; link.setAttribute('aria-label', 'Open ' + station.name + ' official player (opens a new tab)'); }
   else link.removeAttribute('href');
+  const load = $('#loadLocalPlayer');
+  if (load) load.hidden = !station?.embedUrl;
+  if ($('#localStationSelect')) $('#localStationSelect').value = station?.id || '';
   document.querySelectorAll('[data-station-card]').forEach(card => {
     card.classList.toggle('stationSelected', Boolean(station && card.dataset.stationCard === station.id));
   });
 }
+function loadLocalRadio() {
+  const station = selectedLocalStation(), host = $('#localPlayerHost');
+  if (!station?.embedUrl || !host) return;
+  // Avoid restarting an already-open broadcast on repeated clicks.
+  if (loadedLocalStation === station.id) return;
+  stopLocalRadio();
+  loadedLocalStation = station.id;
+  const frame = document.createElement('iframe');
+  frame.title = station.name + ' official live radio player';
+  frame.allow = 'autoplay';
+  frame.className = 'radioFrame-' + station.playerKind;
+  frame.src = station.embedUrl;
+  frame.addEventListener('load', () => {
+    clearTimeout(localPlayerTimeout);
+    if (loadedLocalStation === station.id) $('#localStationStatus').textContent = 'Official player opened below. Press Play or Listen Live inside it. If it is blank or unavailable, use Open Official Player.';
+    // A cross-origin load event does not prove audio playback or successful loading.
+  });
+  frame.addEventListener('error', () => {
+    if (loadedLocalStation === station.id) $('#localStationStatus').textContent = 'The embedded player could not open. Use Open Official Player to listen.';
+  });
+  host.appendChild(frame); host.hidden = false;
+  // Bring the on-page player into view after selecting a card lower on the page.
+  host.scrollIntoView({block: 'center', behavior: 'auto'});
+  $('#stopLocalPlayer').hidden = false;
+  $('#localStationStatus').textContent = 'Opening the official player below…';
+  localPlayerTimeout = setTimeout(() => {
+    if (loadedLocalStation === station.id) $('#localStationStatus').textContent = 'The player is taking longer to open. You can use Open Official Player instead.';
+  }, 15000);
+}
+function chooseLocalStation(id) {
+  if (!allRadioStations().some(station => station.id === id)) return;
+  storage.setItem(LOCAL_STATION_KEY, id);
+  renderLocalStation();
+}
 document.querySelectorAll('[data-station]').forEach(link => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', event => {
     const station = LOCAL_STATIONS.find(item => item.id === link.dataset.station);
     if (!station) return;
-    storage.setItem(LOCAL_STATION_KEY, station.id);
-    renderLocalStation();
-    // Keep the native anchor navigation: works without JS and avoids popup blockers.
-    // A blocked-storage browser keeps this selection in memory for this page only.
+    chooseLocalStation(station.id);
+    if (station.embedUrl) { event.preventDefault(); loadLocalRadio(); }
+    // Unsupported stations and no-JS browsers retain native official link navigation.
     try { if (localStorage.getItem(LOCAL_STATION_KEY) !== station.id) throw new Error('Storage unavailable'); }
-    catch { $('#localStationStatus').textContent = 'Selected for this page. Browser storage is unavailable; choose again on the Player page. Listen in the official player.'; }
+    catch { $('#localStationStatus').textContent += ' Browser storage is unavailable; selection will not persist between pages.'; }
   });
 });
-// Keep open Radio/Player tabs synchronized; never claim external audio is playing.
-window.addEventListener('storage', event => { if (event.key === LOCAL_STATION_KEY || event.key === null) renderLocalStation(); });
-window.addEventListener('focus', renderLocalStation);
+if ($('#localStationSelect')) $('#localStationSelect').addEventListener('change', event => {
+  if (!event.target.value) { storage.removeItem(LOCAL_STATION_KEY); stopLocalRadio(); renderLocalStation(); return; }
+  chooseLocalStation(event.target.value);
+  if (selectedLocalStation()?.embedUrl) loadLocalRadio();
+});
+if ($('#loadLocalPlayer')) $('#loadLocalPlayer').addEventListener('click', loadLocalRadio);
+if ($('#stopLocalPlayer')) $('#stopLocalPlayer').addEventListener('click', () => { stopLocalRadio(); renderLocalStation(); });
+// A station change in another tab stops the old embedded player on this page.
+window.addEventListener('storage', event => { if ([LOCAL_STATION_KEY, SAVED_RADIO_KEY, null].includes(event.key)) {refreshRadioLibrary(); renderLocalStation();} });
+window.addEventListener('focus', () => {refreshRadioLibrary(); renderLocalStation();});
+initializeRadioLibrary();
 renderLocalStation();
