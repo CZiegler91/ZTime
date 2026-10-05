@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Return to your saved Buffalo radio station and explore the ZTime demo music player.">
+  <title>ZTime | Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <!-- Main site header and navigation -->
+<header class="siteHeader">
+    <a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a>
+    <nav class="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="player.html" aria-current="page">Player</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="radio.html">Radio</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="progress.html">Progress</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div id="profileControls" class="profileControls" role="group" aria-label="Profile controls"></div>
+  </header>
+  <!-- Main page content -->
+<main id="main"><section class="pageIntro"><p class="eyebrow">WEB PLAYER</p>
+<h1>POWER YOUR <span>SESSION.</span>
+</h1>
+<p>Your saved local station is ready below. Open its official player to listen, or explore the sample music controls.</p></section><!-- Station selection is shared with Radio through browser-local storage. -->
+<section class="moduleSection" aria-labelledby="localNowHeading">
+<div class="localNow"><div><p class="eyebrow">YOUR LOCAL SOUNDTRACK</p>
+<h2 id="localNowHeading">Now Playing</h2><h3 id="localStationName">Choose your station</h3>
+<p id="localStationMeta">Buffalo &amp; Western New York</p>
+<p id="localStationStatus" role="status">Select a station to open its official live player. No audio is playing inside ZTime.</p></div>
+<div class="localNowActions"><a id="localOfficialPlayer" class="radioListen" hidden target="_blank" rel="noopener noreferrer">Open Official Player ↗</a>
+<a class="outlineButton" href="radio.html">Browse Stations</a></div></div>
+<p class="radioNote">Playback, volume, and current song information are provided by the station’s official player in a new tab. ZTime remembers your selection; it cannot detect playback in that tab.</p>
+<noscript><p>JavaScript is off. Listen Live links still work, but your selection cannot be remembered.</p></noscript></section><section><h2 class="visuallyHidden">Demo music player</h2>
+<div class="player">
+<div class="cover"><img src="ztime-logo.png" alt="ZTime cover art"></div>
+<div class="now">
+<small>ZTIME TRAINING MIX · VISUAL DEMO</small><h3 id="trackTitle">Intensity Boost</h3>
+<p id="trackArtist">Thrash Squad</p>
+<div class="timeline"><i id="trackBar"></i></div>
+<div class="controls">
+<button id="previous" aria-label="Previous track">◀◀</button><button id="play" aria-label="Play track">▶</button><button id="next" aria-label="Next track">▶▶</button>
+</div>
+</div>
+<div class="queue">
+<small>UP NEXT</small><button data-track="0"><b>Intensity Boost</b><span>3:25</span></button><button data-track="1"><b>Blood Rush</b><span>3:52</span></button><button data-track="2"><b>Deep Focus Beats</b><span>4:06</span></button>
+</div>
+</div></section><section class="moduleSection compactSection"><div class="futurePanel">
+<div>
+<p class="eyebrow">ABOUT THE PLAYER</p>
+<h2>Music That Moves With You</h2>
+</div>
+<p>The ZTime Player demonstrates track selection, play and pause controls, and a queue alongside your remembered local radio selection. The training mix controls are a visual demo and do not control the external radio player.</p>
+</div></section><section class="moduleSection learningSection"><div class="sectionHeading"><div>
+<p class="eyebrow">PLAYER GUIDE</p>
+<h2>Explore the listening experience</h2>
+</div></div>
+<div class="guideGrid">
+<article class="guideCard"><span class="stepNumber" aria-hidden="true">01</span><h3>Choose a track</h3>
+<p>Select a title in Up Next to update the featured track, or use the previous and next buttons to move through the three sample selections. The highlighted queue item shows which track is selected.</p></article><article class="guideCard"><span class="stepNumber" aria-hidden="true">02</span><h3>Try the controls</h3>
+<p>Play and pause start or stop the visual progress demonstration. These are sample titles and a simulated timeline; no audio files or streaming service are connected. The player remains a preview of the ZTime idea.</p></article><article class="guideCard"><span class="stepNumber" aria-hidden="true">03</span><h3>Plan your real soundtrack</h3>
+<p>Use the playlist page to think through the mood and order of your session. Bring those ideas to your preferred music app today, then return to ZTime to record the work you completed.</p></article>
+</div></section>
+</main>
+  <!-- Site footer -->
+<footer><a class="brand" href="index.html"><img src="ztime-logo.png" alt="ZTime logo"><span class="brandText"><b><em>Z</em>TIME</b><small>MUSIC FUELS MOVEMENT</small></span></a><p>Fitness, music, progress, and community in one place.</p>
+<p>© 2026 ZTime</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

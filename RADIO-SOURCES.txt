@@ -1,0 +1,32 @@
+OFFICIAL RADIO DESTINATIONS — CHECKED OCTOBER 4, 2026
+
+97 Rock (96.9 WGRF), Classic Rock
+https://www.97rock.com/player/
+Official homepage https://www.97rock.com/ links to this Player page.
+
+103.3 The Edge (WEDG), Alternative Rock
+https://player.listenlive.co/22061
+Station-branded Triton player identifies The Edge and links to www.wedg.com.
+The station homepage returned HTTP 403 to the research tool; the player loaded.
+
+106.5 WYRK, Country
+https://wyrk.com/listen-live/
+Official Listen Live page includes its Amperwave player link.
+
+Power 93.7 WBLK, Hip-Hop/R&B
+https://wblk.com/listen-live/
+Official Listen Live page includes its Amperwave player link.
+
+KISS 98.5 (WKSE), Pop/Top 40
+https://www.audacy.com/stations/kiss985
+Verified through Listen on https://www.audacy.com/kiss985.
+
+WGR 550 (WGR), Buffalo Sports
+https://www.audacy.com/stations/wgr550
+Official https://www.audacy.com/wgr550/listen redirects here.
+
+Audacy players require JavaScript. External audio playback was not tested;
+verification covered official destinations and station identity. Actual broadcast
+availability may depend on region, provider rules or browser settings.
+No authorized direct stream embedding was established for any station.
+All six therefore use their official external-player destinations.
